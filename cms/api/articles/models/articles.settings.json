@@ -9,10 +9,10 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Body": {
+    "body": {
       "type": "richtext"
     },
     "slug": {
