@@ -1,0 +1,23 @@
+version: "3"
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
+
+services:
+  server:
+    labels:
+      - traefik.backend=juandastic_api
+      - traefik.frontend.rule=Host:api.juandastic.co
+      - traefik.docker.network=proxy
+      - traefik.port=3000
+    networks:
+      - internal
+      - proxy
+  db:
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false
