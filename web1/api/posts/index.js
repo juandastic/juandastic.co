@@ -1,9 +1,14 @@
 import fetch from 'isomorphic-unfetch'
 
+const PRIVATE_API = "http://api.juandastic.co"
+const PUBLIC_API = "https://api.juandastic.co"
+
 export function getPosts () {
-  return fetch('https://api.juandastic.co/articles')
+  const apiBase = process.browser ? PUBLIC_API : PRIVATE_API
+  return fetch(`${apiBase}/articles`)
 }
 
 export function getPost (slug) {
-  return fetch(`https://api.juandastic.co/articles?slug=${slug}`)
+  const apiBase = process.browser ? PUBLIC_API : PRIVATE_API
+  return fetch(`${apiBase}/articles?slug=${slug}`)
 }

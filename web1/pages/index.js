@@ -12,9 +12,9 @@ const IndexPage = ({ posts }) =>
   </Layout>
 
 IndexPage.getInitialProps = async ({ req }) => {
-  const res = await getPosts()
-  const json = await res.json()
-  return { posts: json }
+	 const res = await getPosts()
+   const json = await res.json() 
+   return { posts: json }
 }
 
 export default IndexPage
