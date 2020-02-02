@@ -1,5 +1,18 @@
 version: "3"
+
+networks:
+  local_network:
+    external: true
+  internal:
+    external: false
+
 services:
-  cms:
+  api:
     ports:
-     - "1337:1337"
+      - "1337:1337"
+    networks:
+      - local_network
+      - internal
+  db:
+    networks:
+      - internal

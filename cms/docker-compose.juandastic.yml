@@ -7,7 +7,7 @@ networks:
     external: false
 
 services:
-  cms:
+  api:
     labels:
       - traefik.backend=juandastic_api
       - traefik.frontend.rule=Host:api.juandastic.co

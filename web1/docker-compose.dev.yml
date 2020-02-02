@@ -1,5 +1,15 @@
 version: "3"
+
+networks:
+  local_network:
+    external: true
+
 services:
   frontend:
     ports:
       - "3000:3000"
+    networks:
+      - local_network
+    environment:
+      PRIVATE_API: "http://cms_api_1:1337"
+      PUBLIC_API: "http://localhost:1337"

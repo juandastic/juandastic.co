@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 
-const PRIVATE_API = "http://api.juandastic.co"
-const PUBLIC_API = "https://api.juandastic.co"
+const PRIVATE_API = process.env.PRIVATE_API
+const PUBLIC_API = process.env.PUBLIC_API
 
 export function getPosts () {
   const apiBase = process.browser ? PUBLIC_API : PRIVATE_API
