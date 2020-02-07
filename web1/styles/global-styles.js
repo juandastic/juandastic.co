@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-createGlobalStyle`
+export default  createGlobalStyle`
   ul {
     margin: 0;
     padding: 0;

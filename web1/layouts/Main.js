@@ -1,23 +1,23 @@
 import Head from 'next/head'
 import Wrapper from './Wrapper'
-import Nav from 'components/Nav'
+import Header from 'components/Header'
 import Footer from 'components/Footer'
+
+import GlobalStyles from  'styles/global-styles';
 
 export default ({ children, title = 'This is the default title' }) => (
   <Wrapper>
+    <GlobalStyles />
     <Head>
       <title>{ title }</title>
     </Head>
-    <header>
-      <Nav />
-    </header>
+  
+    <Header />
 
     <main>
       { children }
     </main>
 
-    <Footer>
-      Footer
-    </Footer>
+    <Footer />
   </Wrapper>
 )
