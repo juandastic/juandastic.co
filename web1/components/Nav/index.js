@@ -1,17 +1,21 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+import theme from '/styles/theme'
 
 const Wrapper = styled.nav`
   padding: 15px;
-  border-bottom: 1px solid #ddd;
   display: flex;
-  background: #387EF5;
+  box-shadow: 0 1px 3px 0 hsla(0,0%,67.8%,.15);
 
   a {
     padding: 0 15px;
-    color: #FFF;
+    color: ${props => props.theme.colors.white};
+    text-decoration: none;
   }
 `
+Wrapper.defaultProps = {
+  theme: theme
+}
 
 const Nav = () => (
   <Wrapper>

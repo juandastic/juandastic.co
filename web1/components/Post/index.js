@@ -6,8 +6,13 @@ const PostItem = ({ post }) => (
   <Wrapper>
     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
       <a>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
+        <div className="article-img">
+          <img src="https://via.placeholder.com/300x200.png" alt="sample image" />
+        </div>
+        <div className="article-body">
+          <h3>{post.title}</h3>
+          <p>{post.body}</p>
+        </div>
       </a>
     </Link>
   </Wrapper>

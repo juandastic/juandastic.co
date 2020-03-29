@@ -11,7 +11,7 @@ export default ({ children, title = 'This is the default title' }) => (
     <Head>
       <title>{ title }</title>
     </Head>
-  
+
     <Header />
 
     <main>
