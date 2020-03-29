@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "authors",
   "info": {
-    "name": "Author"
+    "name": "Authors"
   },
   "options": {
     "increments": true,

@@ -26,17 +26,17 @@
     "category": {
       "model": "categories"
     },
-    "author": {
-      "model": "authors"
-    },
     "excerpt": {
-      "type": "string"
+      "type": "text"
     },
     "cover": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "author": {
+      "model": "authors"
     }
   }
 }

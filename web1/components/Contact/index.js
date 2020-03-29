@@ -9,8 +9,8 @@ import Wrapper from './Wrapper'
 const Contact = () => {
   return (
     <Wrapper>
-      <h2>Get in Touch</h2>
-      <p> I am always willing to hear how can I help and, I am always ready to face new challenges </p>
+      <h2>Contacto</h2>
+      <p> Siempre estoy dispuesto a ayudar y enfrentar nuevos retos </p>
       <ul className="info">
         <li>
           <a className="info-link" href="mailto:juandastic@gmail.com" target="__blank">

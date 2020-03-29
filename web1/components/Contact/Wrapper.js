@@ -42,10 +42,6 @@ const Wrapper = styled.div`
           font-size: 60px;
           margin-bottom: 10px;
       }
-
-      &:hover .icon {
-          color: ${props => props.theme.colors.red};
-      }
     }
   }
 `
