@@ -29,7 +29,9 @@ HeroSiteTitle.defaultProps = {
 }
 
 const ArticleSection = styled.div`
-  h2{
+  padding: 25px;
+
+  h2 {
     padding: 25px;
     text-align:center;
   }

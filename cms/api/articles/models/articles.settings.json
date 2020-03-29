@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "articles",
   "info": {
-    "name": "articles"
+    "name": "article"
   },
   "options": {
     "increments": true,
@@ -18,6 +18,24 @@
     "slug": {
       "type": "string",
       "unique": true,
+      "required": false
+    },
+    "project": {
+      "model": "projects"
+    },
+    "category": {
+      "model": "categories"
+    },
+    "author": {
+      "model": "authors"
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
       "required": false
     }
   }
