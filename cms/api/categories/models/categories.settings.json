@@ -17,6 +17,9 @@
     },
     "project": {
       "model": "projects"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

@@ -5,7 +5,7 @@ import Post from 'components/Post'
 
 const PostsGrid = ({ posts }) => (
   <Wrapper>
-    { posts.map((post) => <Post post={post} />) }
+    { posts.map((post) => <Post key={post.id} post={post} />) }
   </Wrapper>
 )
 

@@ -4,17 +4,17 @@ import Wrapper from './Wrapper'
 
 const PostItem = ({ post }) => (
   <Wrapper>
-    <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+    <Link href="/[...param]" as={`/${post.category.slug}/${post.slug}`}>
       <a>
         <div className="article-img">
-          <img src="https://via.placeholder.com/1000x500.png" alt="sample image" />
+          <img src={`${process.env.PUBLIC_API}${post.cover.url}`} alt="sample image" />
         </div>
         <div className="article-body">
           <h3>{post.title}</h3>
-          <p>{post.body}</p>
+          <p>{post.excerpt}</p>
           <div className="article-meta">
-            <p>28/03/2010</p>
-            <p>Por Juan David</p>
+            <p className="date">{post.created_at}</p>
+            <p className="author">Por {post.author && post.author.name}</p>
           </div>
         </div>
       </a>

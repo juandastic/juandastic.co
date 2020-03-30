@@ -36,7 +36,7 @@ const Wrapper = styled.div`
       align-items: center;
       color: ${props => props.theme.colors.black};
       text-decoration: none;
-      margin: 15px;
+      margin: 35px;
 
       .icon {
           font-size: 60px;
