@@ -52,4 +52,7 @@ export default  createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  h1, h2 {
+   font-family: 'Source Code Pro', monospace;
+  }
 `

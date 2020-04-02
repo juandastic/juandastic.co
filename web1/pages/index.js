@@ -3,7 +3,6 @@ import Layout from 'layouts/Main'
 import { getPosts } from 'api/posts'
 
 import PostsGrid from 'components/PostsGrid'
-import Contact from 'components/Contact'
 
 import styled from 'styled-components'
 import theme from '/styles/theme'
@@ -49,7 +48,6 @@ const IndexPage = ({ posts }) =>
       <h2>Ultimas articulos</h2>
       <PostsGrid posts={posts} />
     </ArticleSection>
-    <Contact/>
   </Layout>
 
 IndexPage.getInitialProps = async ({ req }) => {

@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import theme from '/styles/theme'
 
 const Wrapper = styled.article`
+  padding-bottom: 40px;
+
   .cover-image {
     position: relative;
     z-index: -1;

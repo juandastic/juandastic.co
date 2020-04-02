@@ -13,7 +13,7 @@ const DynamicPage = ({ post }) =>
 DynamicPage.getInitialProps = async ({ query }) => {
   const res = await getPost(query.param[1])
   const json = await res.json()
-  return { post: json[0] }
+  return { post: json }
 }
 
 export default DynamicPage

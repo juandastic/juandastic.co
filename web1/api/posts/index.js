@@ -10,5 +10,5 @@ export function getPosts () {
 
 export function getPost (slug) {
   const apiBase = process.browser ? PUBLIC_API : PRIVATE_API
-  return fetch(`${apiBase}/articles?slug=${slug}`)
+  return fetch(`${apiBase}/articles/${slug}`)
 }
