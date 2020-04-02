@@ -6,6 +6,8 @@ const Wrapper = styled.article`
   display:flex;
   justify-content: center;
   transition: all .3s ease-out;
+  flex: 1;
+  margin: 10px;
 
   &:hover {
     box-shadow: 0 9px 25px rgba(0,0,0,.2);
@@ -42,7 +44,23 @@ const Wrapper = styled.article`
       margin: 10px 0;
       flex: 1;
     }
+    &.condensed {
+      h3 {
+        font-size: 1.2rem;
+        line-height: 20px;
+        margin-bottom: 5px;
+      }
+      p {
+        margin: 0;
+      }
+      .article-meta {
+        flex-direction: column;
 
+        .author{
+          text-align: left;
+        }
+      }
+    }
     .article-meta {
       display: flex;
       border-top: 1px solid grey;

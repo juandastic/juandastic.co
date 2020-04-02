@@ -4,10 +4,14 @@ import theme from '/styles/theme'
 const Wrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  
+  h2 {
+    text-align: center;
+  }
+  .articles {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `
 
 export default Wrapper

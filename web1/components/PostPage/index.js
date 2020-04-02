@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
+import PostsCarousel from 'components/PostsCarousel/index'
 
 const PostPage = ({ post }) => (
   <Wrapper>
@@ -19,6 +20,7 @@ const PostPage = ({ post }) => (
         <ReactMarkdown source={post && post.body} />
       </div>
     </div>
+    <PostsCarousel posts={post && post.articles_related} />
   </Wrapper>
 )
 
