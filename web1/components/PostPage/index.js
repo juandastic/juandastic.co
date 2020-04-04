@@ -2,12 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
-import PostsCarousel from 'components/PostsCarousel/index'
+import PostsCarousel from 'components/PostsCarousel'
+import AuthorCard from 'components/AuthorCard'
 
 const PostPage = ({ post }) => (
   <Wrapper>
     <div className="cover-image">
-        <img src={`${process.env.PUBLIC_API}${post.cover.url}`} alt="sample image" />
+        <img src={`${process.env.PUBLIC_API}${post.cover && post.cover.url}`} alt="sample image" />
     </div>
     <div className="article-section">
       <h1>
@@ -19,6 +20,7 @@ const PostPage = ({ post }) => (
       <div className="article-body">
         <ReactMarkdown source={post && post.body} />
       </div>
+      <AuthorCard author={ post.author }/>
     </div>
     <PostsCarousel posts={post && post.articles_related} />
   </Wrapper>

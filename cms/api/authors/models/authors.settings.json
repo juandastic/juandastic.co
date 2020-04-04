@@ -11,6 +11,15 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "profile": {
+      "type": "text"
     }
   }
 }

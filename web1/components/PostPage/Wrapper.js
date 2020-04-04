@@ -26,13 +26,17 @@ const Wrapper = styled.article`
     }
   }
   .article-section {
-    max-width: 60%;
+    max-width: 680px;
     margin: 0 auto;
     margin-top: -140px;
     padding: 40px 80px;
     box-shadow: 0 20px 40px rgba(91,107,174,.15);
     border-radius: 5px;
     background: white;
+
+    @media only screen and (max-width: 600px) {
+      padding: 40px 24px;
+    }
 
     h1 {
       text-align: center;
@@ -48,6 +52,9 @@ const Wrapper = styled.article`
 
     .article-body {
       padding-top: 10px;
+      font-size: 21px;
+      line-height: 1.58;
+      letter-spacing: -0.004em;
     }
   }
 `
