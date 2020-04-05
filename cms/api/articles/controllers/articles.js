@@ -15,11 +15,12 @@ module.exports = {
    */
   async findOne(ctx) {
     const entity = await strapi.services.articles.findOne({slug: ctx.params.slug});
+    if (entity) {
+      const articles_related = await strapi.services.articles.find();
 
-    const articles_related = await strapi.services.articles.find();
-    
-    entity.articles_related = articles_related;
-    
+      entity.articles_related = articles_related;
+    }
+
     return sanitizeEntity(entity, { model: strapi.models.articles });
   },
 };

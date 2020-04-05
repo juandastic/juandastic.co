@@ -7,6 +7,7 @@ const getApiUrl = () => {
 }
 
 export default {
+  projectId: "juandastic-blog",
   getApiUrl: getApiUrl,
   assetsUrl: PUBLIC_API
 }

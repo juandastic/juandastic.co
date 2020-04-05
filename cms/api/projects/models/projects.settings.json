@@ -9,10 +9,10 @@
     "timestamps": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Title": {
+    "title": {
       "type": "string"
     },
     "page_sections": {
@@ -20,6 +20,11 @@
       "components": [
         "content.text-section"
       ]
+    },
+    "project_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

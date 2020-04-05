@@ -1,6 +1,9 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import Layout from 'layouts/Main'
 import { getPosts } from 'api/posts'
+import { getProjectInfo } from 'api/project'
+import { get } from 'utils'
 
 import PostsGrid from 'components/PostsGrid'
 
@@ -9,7 +12,7 @@ import theme from '/styles/theme'
 
 const HeroSiteTitle = styled.div`
   text-align: center;
-  padding: 40px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +22,7 @@ const HeroSiteTitle = styled.div`
   h1 {
     margin-bottom: 25px;
   }
-  p {
+  .title_body {
     max-width: 550px;
   }
 `
@@ -35,26 +38,41 @@ const ArticleSection = styled.div`
     text-align:center;
   }
 `
-const IndexPage = ({ posts }) =>
-  <Layout>
-    <HeroSiteTitle>
-     <h1>Titulo de la pagina</h1>
-     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id enim libero. Suspendisse ante mauris, congue eu dolor et, placerat sodales libero.
-        congue eu dolor et, placerat sodales libero.
-     </p>
-    </HeroSiteTitle>
-    <ArticleSection>
-      <h2>Ultimas articulos</h2>
-      <PostsGrid posts={posts} />
-    </ArticleSection>
-  </Layout>
+const IndexPage = ({ project, posts }) => {
+  const heroComponent = project.page_sections.find((component) => {
+    return component.content_id === "home-title"
+  })
 
-IndexPage.getInitialProps = async ({ req }) => {
-	 const res = await getPosts()
-   const posts = await res.json()
+  const articlesComponent = project.page_sections.find((component) => {
+    return component.content_id === "articles-section"
+  })
 
-   return { posts: posts }
+  return (
+    <Layout project={project} >
+      <HeroSiteTitle>
+        <h1>{get(heroComponent, "title", "home-title.title")}</h1>
+        <div className="title_body">
+          <ReactMarkdown source={get(heroComponent, "body", "home-title.body")} />
+        </div>
+      </HeroSiteTitle>
+      <ArticleSection>
+        <h2>{get(articlesComponent, "title", "articles-section.title")}</h2>
+        <PostsGrid posts={posts} />
+      </ArticleSection>
+    </Layout>
+  )
+}
+
+export async function getServerSideProps(context) {
+  const [ projectResponse, postsResponse ] = await Promise.all([getProjectInfo(), getPosts()])
+  const [ projectData, postsData ] = await Promise.all([projectResponse.json(), postsResponse.json()])
+
+  return {
+    props: {
+      project: projectData,
+      posts: postsData
+    }
+  }
 }
 
 export default IndexPage

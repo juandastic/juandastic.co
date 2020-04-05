@@ -25,10 +25,10 @@ BrandName.defaultProps = {
   theme: theme
 }
 
-const Header = () => (
+const Header = ({ siteName }) => (
   <Wrapper>
     <BrandName>
-      <Link href='/'><a>Juandastic</a></Link>
+      <Link href='/'><a>{siteName}</a></Link>
     </BrandName>
     {/* <Nav /> */}
   </Wrapper>

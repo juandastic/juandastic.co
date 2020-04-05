@@ -4,20 +4,28 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Contact from 'components/Contact'
 import GlobalStyles from  'styles/global-styles';
+import { get } from 'utils'
 
-export default ({ children, title = 'This is the default title' }) => (
-  <Wrapper>
-    <GlobalStyles />
-    <Head>
-      <title>{ title }</title>
-    </Head>
+export default ({ children, project, title = 'This is the default title'}) => {
 
-    <Header />
+  const contactComponent = project.page_sections.find((component) => {
+    return component.content_id === "contact-section"
+  })
 
-    <main>
-      { children }
-    </main>
-    <Contact/>
-    <Footer />
-  </Wrapper>
-)
+  return (
+    <Wrapper>
+      <GlobalStyles />
+      <Head>
+        <title>{ get(project, "title", title)}</title>
+      </Head>
+
+      <Header siteName={get(project, "title", "A new Site")} />
+
+      <main>
+        { children }
+      </main>
+      <Contact contactInfo={contactComponent} />
+      <Footer />
+    </Wrapper>
+  )
+}

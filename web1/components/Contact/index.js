@@ -1,16 +1,17 @@
 import React from 'react'
 
+import { get } from 'utils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import Wrapper from './Wrapper'
 
-const Contact = () => {
+const Contact = ({ contactInfo }) => {
   return (
     <Wrapper>
-      <h2>Contacto</h2>
-      <p> Siempre estoy dispuesto a ayudar y enfrentar nuevos retos </p>
+      <h2>{get(contactInfo, "title", "contact-section.title")}</h2>
+      <p> {get(contactInfo, "body", "contact-section.body")} </p>
       <ul className="info">
         <li>
           <a className="info-link" href="mailto:juandastic@gmail.com" target="__blank">
