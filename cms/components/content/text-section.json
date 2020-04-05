@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "components_content_text_sections",
+  "info": {
+    "name": "Text Section",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "content_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

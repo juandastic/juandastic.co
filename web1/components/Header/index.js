@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import Nav from 'components/Nav'
 import theme from '/styles/theme'
@@ -13,9 +14,12 @@ Wrapper.defaultProps = {
 const BrandName = styled.div`
   flex: 1;
   padding: 15px;
-  color: ${props => props.theme.colors.white};
-  font-family: 'Source Code Pro', monospace;
-  font-size: 24px;
+  a {
+    color: ${props => props.theme.colors.white};
+    font-family: 'Source Code Pro', monospace;
+    font-size: 24px;
+    text-decoration: none;
+  }
 `
 BrandName.defaultProps = {
   theme: theme
@@ -24,9 +28,9 @@ BrandName.defaultProps = {
 const Header = () => (
   <Wrapper>
     <BrandName>
-      Juandastic
+      <Link href='/'><a>Juandastic</a></Link>
     </BrandName>
-    <Nav />
+    {/* <Nav /> */}
   </Wrapper>
 )
 

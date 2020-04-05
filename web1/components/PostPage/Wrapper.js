@@ -40,6 +40,7 @@ const Wrapper = styled.article`
 
     h1 {
       text-align: center;
+      font-size: 2em;
     }
 
     .article-meta {
