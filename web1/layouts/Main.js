@@ -8,7 +8,7 @@ import { get } from 'utils'
 
 export default ({ children, project, title = 'This is the default title'}) => {
 
-  const contactComponent = project.page_sections.find((component) => {
+  const contactComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "contact-section"
   })
 

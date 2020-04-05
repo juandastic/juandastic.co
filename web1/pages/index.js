@@ -39,11 +39,11 @@ const ArticleSection = styled.div`
   }
 `
 const IndexPage = ({ project, posts }) => {
-  const heroComponent = project.page_sections.find((component) => {
+  const heroComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "home-title"
   })
 
-  const articlesComponent = project.page_sections.find((component) => {
+  const articlesComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "articles-section"
   })
 
