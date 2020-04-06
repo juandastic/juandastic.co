@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import Layout from 'layouts/Main'
 import { getPosts } from 'api/posts'
 import { getProjectInfo } from 'api/project'
-import { get } from 'utils'
+import { get, absoluteUrl } from 'utils'
 
 import PostsGrid from 'components/PostsGrid'
 
@@ -38,7 +38,7 @@ const ArticleSection = styled.div`
     text-align:center;
   }
 `
-const IndexPage = ({ project, posts }) => {
+const IndexPage = ({ project, posts, pageUrl }) => {
   const heroComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "home-title"
   })
@@ -48,7 +48,7 @@ const IndexPage = ({ project, posts }) => {
   })
 
   return (
-    <Layout project={project} >
+    <Layout project={project} pageUrl={pageUrl}>
       <HeroSiteTitle>
         <h1>{get(heroComponent, "title", "home-title.title")}</h1>
         <div className="title_body">
@@ -66,11 +66,13 @@ const IndexPage = ({ project, posts }) => {
 export async function getServerSideProps(context) {
   const [ projectResponse, postsResponse ] = await Promise.all([getProjectInfo(), getPosts()])
   const [ projectData, postsData ] = await Promise.all([projectResponse.json(), postsResponse.json()])
+  const pageUrl = absoluteUrl(context.req) + context.req.url
 
   return {
     props: {
       project: projectData,
-      posts: postsData
+      posts: postsData,
+      pageUrl: pageUrl
     }
   }
 }

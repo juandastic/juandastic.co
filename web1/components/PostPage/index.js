@@ -3,12 +3,28 @@ import Link from 'next/link'
 import config from 'config'
 import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 import PostsCarousel from 'components/PostsCarousel'
 import AuthorCard from 'components/AuthorCard'
 import { get, formatDate } from 'utils'
 
-const PostPage = ({ post }) => (
+const PostPage = ({ post, pageUrl }) => (
   <Wrapper>
+    <NextSeo
+      title={post.title}
+      description={post.excerpt}
+    />
+    <ArticleJsonLd
+      url={pageUrl}
+      title={post.title}
+      images={[
+        `${config.assetsUrl}${get(post, "cover.url", "default-img")}`
+      ]}
+      datePublished={post.created_at}
+      dateModified={post.updated_at}
+      authorName={get(post, "author.name", "Sin Autor")}
+      description={post.excerpt}
+    />
     <div className="cover-image">
         <img src={`${config.assetsUrl}${get(post, "cover.url", "default-img")}`} alt="sample image" />
     </div>

@@ -5,8 +5,9 @@ import Footer from 'components/Footer'
 import Contact from 'components/Contact'
 import GlobalStyles from  'styles/global-styles';
 import { get } from 'utils'
+import { DefaultSeo } from 'next-seo';
 
-export default ({ children, project, title = 'This is the default title'}) => {
+export default ({ children, project, pageUrl}) => {
 
   const contactComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "contact-section"
@@ -15,11 +16,13 @@ export default ({ children, project, title = 'This is the default title'}) => {
   return (
     <Wrapper>
       <GlobalStyles />
-      <Head>
-        <title>{ get(project, "title", title)}</title>
-      </Head>
+      <DefaultSeo
+        titleTemplate={`%s | ${get(project, "title", "project.title")}`}
+        canonical={pageUrl}
+        {...project.seo_metadata}
+      />
 
-      <Header siteName={get(project, "title", "A new Site")} />
+      <Header siteName={get(project, "title", "project.title")} />
 
       <main>
         { children }

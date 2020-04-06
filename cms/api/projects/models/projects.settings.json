@@ -25,6 +25,9 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "seo_metadata": {
+      "type": "json"
     }
   }
 }
