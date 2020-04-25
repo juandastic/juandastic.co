@@ -3,10 +3,10 @@ import config from 'config'
 
 export function getPosts () {
   const apiBase = config.getApiUrl()
-  return fetch(`${apiBase}/articles`)
+  return fetch(`${apiBase}/articles?project.project_id=${config.projectId}`)
 }
 
 export function getPost (slug) {
   const apiBase = config.getApiUrl()
-  return fetch(`${apiBase}/articles/${slug}`)
+  return fetch(`${apiBase}/articles/${slug}?project.project_id=${config.projectId}`)
 }

@@ -64,9 +64,27 @@ const IndexPage = ({ project, posts, pageUrl }) => {
 }
 
 export async function getServerSideProps(context) {
-  const [ projectResponse, postsResponse ] = await Promise.all([getProjectInfo(), getPosts()])
-  const [ projectData, postsData ] = await Promise.all([projectResponse.json(), postsResponse.json()])
   const pageUrl = absoluteUrl(context.req) + context.req.url
+
+  const [ projectResponse, postsResponse ] = await Promise.all([getProjectInfo(), getPosts()])
+
+  let errorResponse = null
+
+  if (projectResponse.status !== 200) {
+    errorResponse = projectResponse
+  } else if (postsResponse.status !== 200) {
+    errorResponse = postsResponse
+  }
+
+  if (errorResponse) {
+    console.log('API error on ' + errorResponse.url)
+    context.res.statusCode = errorResponse.status
+    return {
+      props: { project: {}, posts: [], pageUrl: pageUrl }
+    }
+  }
+
+  const [ projectData, postsData ] = await Promise.all([projectResponse.json(), postsResponse.json()])
 
   return {
     props: {

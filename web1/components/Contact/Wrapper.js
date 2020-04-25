@@ -26,8 +26,11 @@ const Wrapper = styled.div`
     list-style: none;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
     padding: 0;
+
+    @media only screen and (max-width: 600px) {
+      flex-wrap: wrap;
+    }
 
     .info-link {
       font-size: 20px;
@@ -39,8 +42,9 @@ const Wrapper = styled.div`
       margin: 35px;
 
       .icon {
-          font-size: 60px;
-          margin-bottom: 10px;
+        width: 100%;
+        height: 115px;
+        margin-bottom: 10px;
       }
     }
   }
