@@ -1,4 +1,10 @@
 #!/bin/bash
 
 npm install
-npm run dev
+
+if [ ${NODE_ENV} = "production" ]; then
+  npm run build
+  npm start
+else
+  npm run dev
+fi

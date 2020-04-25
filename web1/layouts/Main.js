@@ -7,7 +7,7 @@ import GlobalStyles from  'styles/global-styles';
 import { get } from 'utils'
 import { DefaultSeo } from 'next-seo';
 
-export default ({ children, project, pageUrl}) => {
+export default ({ children, project = {}, pageUrl}) => {
 
   const contactComponent = project.page_sections && project.page_sections.find((component) => {
     return component.content_id === "contact-section"

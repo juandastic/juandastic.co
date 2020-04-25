@@ -19,3 +19,5 @@ services:
     environment:
       PRIVATE_API: "http://api.juandastic.co"
       PUBLIC_API: "https://api.juandastic.co"
+      NODE_ENV: production
+
