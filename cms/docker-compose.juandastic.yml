@@ -15,6 +15,7 @@ services:
       - traefik.port=80
     environment:
       PORT: 80
+      NODE_ENV: production
     networks:
       proxy:
         aliases:
