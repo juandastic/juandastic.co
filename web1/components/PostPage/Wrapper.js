@@ -56,6 +56,10 @@ const Wrapper = styled.article`
       font-size: 21px;
       line-height: 1.58;
       letter-spacing: -0.004em;
+
+      img {
+        width: 100%
+      }
     }
   }
 `

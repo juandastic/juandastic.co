@@ -1,11 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
 import config from 'config'
 import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import PostsCarousel from 'components/PostsCarousel'
 import AuthorCard from 'components/AuthorCard'
+import CodeBlock from 'components/CodeBlock'
 import { get, formatDate } from 'utils'
 
 const PostPage = ({ post, pageUrl }) => (
@@ -36,7 +35,8 @@ const PostPage = ({ post, pageUrl }) => (
         <div className="author">Por {get(post, "author.name", "Sin Autor")} | {formatDate(post.created_at)}</div>
       </div>
       <div className="article-body">
-        <ReactMarkdown source={post.body} />
+        <ReactMarkdown source={post.body} 
+          renderers={{ code: CodeBlock }}/>
       </div>
       <AuthorCard author={ get(post, "author", {}) }/>
     </div>

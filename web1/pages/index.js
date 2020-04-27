@@ -24,6 +24,7 @@ const HeroSiteTitle = styled.div`
   }
   .title_body {
     max-width: 550px;
+    line-height: 1.3em;
   }
 `
 HeroSiteTitle.defaultProps = {
