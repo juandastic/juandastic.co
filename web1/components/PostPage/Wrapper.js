@@ -60,6 +60,10 @@ const Wrapper = styled.article`
       img {
         width: 100%
       }
+
+      code {
+        font-size: 0.8em;
+      }
     }
   }
 `
