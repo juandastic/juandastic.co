@@ -10,7 +10,7 @@ services:
   frontend:
     labels:
       - traefik.backend=web1_juandastic
-      - traefik.frontend.rule=Host:web1.juandastic.co
+      - traefik.frontend.rule=Host:juandastic.co
       - traefik.docker.network=proxy
       - traefik.port=3000
     networks:
