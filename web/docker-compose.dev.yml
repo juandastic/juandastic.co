@@ -11,5 +11,5 @@ services:
     networks:
       - local_network
     environment:
-      PRIVATE_API: "http://cms_api_1:1337"
+      PRIVATE_API: "http://api_server_1:1337"
       PUBLIC_API: "http://localhost:1337"

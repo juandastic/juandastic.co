@@ -11,11 +11,6 @@ const DynamicPage = ({ project, post, pageUrl }) =>
     <PostPage post={post} pageUrl={pageUrl} />
   </Layout>
 
-// DynamicPage.getInitialProps = async ({ query }) => {
-//   const res = await getPost(query.param[1])
-//   const json = await res.json()
-//   return { post: json }
-// }
 
 export async function getServerSideProps(context) {
   const [ projectResponse, postResponse ] = await Promise.all([getProjectInfo(), getPost(context.query.param[1])])
