@@ -7,7 +7,7 @@ networks:
     external: false
 
 services:
-  api:
+  server:
     ports:
       - "1337:1337"
     networks:
