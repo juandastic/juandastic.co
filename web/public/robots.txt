@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juandastic.co/sitemap.xml

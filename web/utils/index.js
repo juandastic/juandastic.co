@@ -6,6 +6,14 @@ export const formatDate = (dateString) => {
   return date.toDateString()
 }
 
+export const getDateFormat = (dateString) => {
+  const date = new Date(dateString)
+  const yy = date.getUTCFullYear()
+  const mm = `0${(date.getUTCMonth()+1)}`.slice(-2)
+  const dd = `0${date.getUTCDate()}`.slice(-2)
+  return `${yy}-${mm}-${dd}`
+}
+
 export const absoluteUrl = (req) => {
   let host = req.headers.host
   let protocol = /^localhost(:\d+)?$/.test(host) ? 'http:' : 'https:'
