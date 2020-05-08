@@ -1,28 +1,43 @@
 import React from 'react'
 import Layout from 'layouts/Main'
-import { getPost } from 'api/posts'
-import { getProjectInfo } from 'api/project'
+import Error from 'next/error'
+
 import PostPage from 'components/PostPage'
-import { absoluteUrl } from 'utils'
+import postPage from 'pageFactories/postPage'
 
+const DynamicPage = (props) => {
 
-const DynamicPage = ({ project, post, pageUrl }) =>
-  <Layout project={project} pageUrl={pageUrl}>
-    <PostPage post={post} pageUrl={pageUrl} />
-  </Layout>
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />
+  }
+
+  const postPageComponent = (
+    <Layout project={props.project} pageUrl={props.pageUrl}>
+      <PostPage post={props.post} pageUrl={props.pageUrl} />
+    </Layout>
+  )
+
+  return postPageComponent
+}
 
 
 export async function getServerSideProps(context) {
-  const [ projectResponse, postResponse ] = await Promise.all([getProjectInfo(), getPost(context.query.param[1])])
-  const [ projectData, postData ] = await Promise.all([projectResponse.json(), postResponse.json()])
-  const pageUrl = absoluteUrl(context.req) + context.req.url
+  // Dynamic Pages
+  // article -> category-slug/article-slug
+  // category -> category-slug
+  let pageData = { props: { errorCode: 404 } }
+
+  if (context.query.param.length == 2) {
+    const postPageData = await postPage(context)
+    pageData = postPageData
+  }
+
+  if (pageData.props.errorCode) {
+    context.res.statusCode = pageData.props.errorCode
+  }
 
   return {
-    props: {
-      project: projectData,
-      post: postData,
-      pageUrl: pageUrl
-    }
+    props: pageData.props
   }
 }
 
