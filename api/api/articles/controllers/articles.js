@@ -16,10 +16,9 @@ module.exports = {
   async findOne(ctx) {
     const entity = await strapi.services.articles.findOne({slug: ctx.params.slug});
 
-    if(ctx.query["project.project_id"] !== entity.project.project_id)
-      return false;
-
     if (entity) {
+      if(ctx.query["project.project_id"] !== entity.project.project_id)
+        return false;
       const articles_related = await strapi.services.articles.find({ id_ne: entity.id, project: entity.project.id});
 
       entity.articles_related = articles_related
